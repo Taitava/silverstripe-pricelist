@@ -1,0 +1,11 @@
+fi:
+  Pricelist:
+    PLURALNAME: Hinnastot
+    SINGULARNAME: Hinnasto
+  PricelistItem:
+    Column:
+      Description: Kuvaus
+      Price: Hinta
+      Title: Tuote
+    PLURALNAME: Tuotteet
+    SINGULARNAME: Tuote

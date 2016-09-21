@@ -77,9 +77,9 @@ class Pricelist extends DataObject
 	{
 		//TODO: Make the function non static so that different pricelists can have different column sets. Also implement some flexible way to define the columns instead of hardcoding them here.
 		$columns = array(
-			array('Field' => 'Title', 'Column' => 'Item'),
-			array('Field' => 'Description', 'Column' => 'Description'),
-			array('Field' => 'DisplayPrice', 'Column' => 'Price'),
+			array('Field' => 'Title',	'Column' => _t('PricelistItem.Column.Title',		'Item')),
+			array('Field' => 'Description',	'Column' => _t('PricelistItem.Column.Description',	'Description')),
+			array('Field' => 'DisplayPrice','Column' => _t('PricelistItem.Column.Price',		'Price')),
 		);
 		return $return_array_list ? new ArrayList($columns) : $columns;
 	}

@@ -1,0 +1,11 @@
+en:
+  Pricelist:
+    PLURALNAME: Pricelists
+    SINGULARNAME: Pricelist
+  PricelistItem:
+    Column:
+      Description: Description
+      Price: Price
+      Title: Item
+    PLURALNAME: Products
+    SINGULARNAME: Product
