@@ -6,7 +6,6 @@
   "require": {
     "silverstripe/framework": "~3.1",
     "silverstripe/cms": "~3.1",
-    "unclecheese/display-logic": "*"
   },
   "keywords": ["silverstripe","pricelist","price list","list","price","product","catalogue"],
   "authors": [{
