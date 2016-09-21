@@ -9,3 +9,4 @@ en:
       Title: Item
     PLURALNAME: Products
     SINGULARNAME: Product
+    StartingPriceAbbreviation: 'Starting at'

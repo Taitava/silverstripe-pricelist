@@ -9,3 +9,4 @@ fi:
       Title: Tuote
     PLURALNAME: Tuotteet
     SINGULARNAME: Tuote
+    StartingPriceAbbreviation: 'Alk.'

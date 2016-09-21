@@ -6,6 +6,7 @@
  * @property string $Description
  * @property float $CurrentPrice
  * @property float $NormalPrice
+ * @property bool $IsStartingPrice
  */
 class PricelistItem extends DataObject
 {
@@ -15,6 +16,7 @@ class PricelistItem extends DataObject
 		'Description'		=> 'HTMLText',
 		'CurrentPrice'		=> 'Currency',
 		'NormalPrice'		=> 'Currency',
+		'IsStartingPrice'	=> 'Boolean',
 	);
 	
 	private static $belongs_many_many = array(
@@ -33,6 +35,15 @@ class PricelistItem extends DataObject
 		'CurrentPrice',
 		'NormalPrice',
 	);
+	
+	public function getCMSFields()
+	{
+		$fields = parent::getCMSFields();
+		
+		$fields->addFieldToTab('Root.Main', new CheckboxField('IsStartingPrice'));
+		
+		return $fields;
+	}
 	
 	public function TableRow()
 	{
@@ -55,6 +66,11 @@ class PricelistItem extends DataObject
 	public function DisplayPrice()
 	{
 		return $this->renderWith('PricelistItem_display_price');
+	}
+	
+	public function StartingPriceAbbreviation()
+	{
+		return $this->IsStartingPrice ? _t('PricelistItem.StartingPriceAbbreviation', 'Starting at') : '';
 	}
 	
 	/**
