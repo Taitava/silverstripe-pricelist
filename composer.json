@@ -1,0 +1,21 @@
+{
+  "name": "taitava/silverstripe-pricelist",
+  "description": "Just a simple pricelist functionality that makes it possible to create products and have them listed in specific pricelists. No e-commerce functions.",
+  "type": "silverstripe-module",
+  "license": "MIT",
+  "require": {
+    "silverstripe/framework": "~3.1",
+    "silverstripe/cms": "~3.1",
+    "unclecheese/display-logic": "*"
+  },
+  "keywords": ["silverstripe","pricelist","price list","list","price","product","catalogue"],
+  "authors": [{
+    "name": "Jarkko Linnanvirta",
+    "email": "posti@taitavasti.fi",
+    "homepage": "http://taitavasti.fi",
+    "role": "Developer"
+  }],
+  "extra": {
+    "installer-name": "pricelist"
+  }
+}
