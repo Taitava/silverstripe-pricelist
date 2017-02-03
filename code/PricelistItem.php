@@ -38,11 +38,25 @@ class PricelistItem extends DataObject
 		'NormalPrice',
 	);
 	
+	public function fieldLabels($includerelations = true)
+	{
+		$labels = parent::fieldLabels($includerelations);
+		
+		$labels['Title'] = _t('PricelistItem.Title', 'Title');
+		$labels['CurrentPrice'] = _t('PricelistItem.CurrentPrice', 'Current price');
+		$labels['NormalPrice'] = _t('PricelistItem.NormalPrice', 'Normal price');
+		$labels['Description'] = _t('PricelistItem.Description', 'Description');
+		$labels['Pricelists'] = _t('Pricelist.PLURALNAME');
+		
+		return $labels;
+	}
+	
 	public function getCMSFields()
 	{
 		$fields = parent::getCMSFields();
 		
-		$fields->addFieldToTab('Root.Main', new CheckboxField('IsStartingPrice'));
+		$fields->insertAfter('CurrentPrice', new CheckboxField('IsStartingPrice', _t('PricelistItem.IsStartingPrice', 'This is a starting price')));
+		$fields->dataFieldByName('NormalPrice')->setDescription(_t('PricelistItem.NormalPriceDescription', 'Set this only if you want to indicate that the Current price is discounted/changed.'));
 		
 		return $fields;
 	}

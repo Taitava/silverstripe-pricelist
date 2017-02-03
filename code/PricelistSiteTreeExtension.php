@@ -22,13 +22,13 @@ class PricelistSiteTreeExtension extends DataExtension
 	public function updateCMSFields(FieldList $fields)
 	{
 		$grid_field_config	= new GridFieldConfig_RelationEditor();
-		$grid_field		= new GridField('Pricelists', 'Pricelists', $this->owner->Pricelists(),$grid_field_config);
+		$grid_field		= new GridField('Pricelists', _t('Pricelist.PLURALNAME'), $this->owner->Pricelists(),$grid_field_config);
 		if (ClassInfo::exists('GridFieldSortableRows'))
 		{
 			//Make pricelists sortable if 'undefinedoffset/sortablegridfield' module is installed
 			$grid_field_config->addComponent(new GridFieldSortableRows('SortOrder'));
 		}
-		$fields->addFieldToTab('Root', new Tab('Pricelists','Pricelists'));
+		$fields->addFieldToTab('Root', new Tab('Pricelists',_t('Pricelist.PLURALNAME')));
 		$fields->addFieldToTab('Root.Pricelists', $grid_field);
 	}
 	

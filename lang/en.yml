@@ -2,6 +2,9 @@ en:
   Pricelist:
     PLURALNAME: Pricelists
     SINGULARNAME: Pricelist
+    Title: Title
+    Description: Description
+    Pages: Pages
   PricelistItem:
     Column:
       Description: Description
@@ -10,3 +13,9 @@ en:
     PLURALNAME: Products
     SINGULARNAME: Product
     StartingPriceAbbreviation: 'Starting at'
+    IsStartingPrice: 'This is a starting price'
+    Title: Title
+    Description: Description
+    CurrentPrice: Current price
+    NormalPrice: Normal price
+    NormalPriceDescription: 'Set this only if you want to indicate that the Current price is discounted/changed.'

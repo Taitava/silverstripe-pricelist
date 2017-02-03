@@ -2,6 +2,9 @@ fi:
   Pricelist:
     PLURALNAME: Hinnastot
     SINGULARNAME: Hinnasto
+    Title: Otsikko
+    Description: Kuvaus
+    Pages: Sivut
   PricelistItem:
     Column:
       Description: Kuvaus
@@ -10,3 +13,9 @@ fi:
     PLURALNAME: Tuotteet
     SINGULARNAME: Tuote
     StartingPriceAbbreviation: 'Alk.'
+    IsStartingPrice: Kyseessä on alkaen-hinta
+    Title: Otsikko
+    Description: Kuvaus
+    CurrentPrice: Hinta
+    NormalPrice: Normaalihinta
+    NormalPriceDescription: Syötä tähän hinta vain, jos haluat näyttää että voimassa olevaa hintaa on alennettu/muutettu.

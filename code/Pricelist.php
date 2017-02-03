@@ -55,6 +55,16 @@ class Pricelist extends DataObject
 	
 	private static $default_sort = 'SortOrder';
 	
+	public function fieldLabels($includerelations = true)
+	{
+		$labels = parent::fieldLabels($includerelations);
+		
+		$labels['Title'] = _t('Pricelist.Title', 'Title');
+		$labels['Description'] = _t('Pricelist.Description', 'Description');
+		
+		return $labels;
+	}
+	
 	public function getCMSFields()
 	{
 		$fields = parent::getCMSFields();
@@ -67,19 +77,19 @@ class Pricelist extends DataObject
 		
 		//Pricelist items
 		$items_grid_field_config	= new GridFieldConfig_RelationEditor();
-		$items_grid_field		= new GridField('Items', 'Items', $this->Items(),$items_grid_field_config);
+		$items_grid_field		= new GridField('Items', _t('PricelistItem.PLURALNAME'), $this->Items(),$items_grid_field_config);
 		if (ClassInfo::exists('GridFieldSortableRows'))
 		{
 			//Make items/products sortable if 'undefinedoffset/sortablegridfield' module is installed
 			$items_grid_field_config->addComponent(new GridFieldSortableRows('SortOrder'));
 		}
-		$fields->addFieldToTab('Root', new Tab('Items','Items'));
+		$fields->addFieldToTab('Root', new Tab('Items',_t('PricelistItem.PLURALNAME')));
 		$fields->addFieldToTab('Root.Items', $items_grid_field);
 		
 		//SiteTree objects
 		$pages_grid_field_config	= new GridFieldConfig_RelationEditor();
-		$pages_grid_field		= new GridField('Pages', 'Pages', $this->Pages(),$pages_grid_field_config);
-		$fields->addFieldToTab('Root', new Tab('Pages','Pages'));
+		$pages_grid_field		= new GridField('Pages', _t('Pricelist.Pages', 'Pages'), $this->Pages(),$pages_grid_field_config);
+		$fields->addFieldToTab('Root', new Tab('Pages', _t('Pricelist.Pages', 'Pages')));
 		$fields->addFieldToTab('Root.Pages', $pages_grid_field);
 		$pages_grid_field_config->removeComponentsByType('GridFieldAddNewButton');
 		
