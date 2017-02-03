@@ -23,6 +23,8 @@ class PricelistItem extends DataObject
 		'Pricelists'		=> 'Pricelist',
 	);
 	
+	private static $default_sort = 'SortOrder';
+	
 	/**
 	 * A list of fields whose values should be escaped when rendered to a template in frontend. Basically all database
 	 * fields, excluding HTML fields. May also contain dynamic fields (= values retrieved from methods) if those should

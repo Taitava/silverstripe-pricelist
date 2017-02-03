@@ -16,5 +16,8 @@
   }],
   "extra": {
     "installer-name": "pricelist"
+  },
+  "suggest": {
+    "undefinedoffset/sortablegridfield": "Makes it possible to drag & drop pricelists and pricelist items to different order in the backend."
   }
 }

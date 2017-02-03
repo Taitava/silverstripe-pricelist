@@ -43,9 +43,17 @@ class Pricelist extends DataObject
 		'Items'			=> 'PricelistItem',
 	);
 	
+	private static $many_many_extraFields = array(
+		'Items' => array(
+			'SortOrder'	=> 'Int',
+		),
+	);
+	
 	private static $belongs_many_many = array(
 		'Pages'			=> 'SiteTree',
 	);
+	
+	private static $default_sort = 'SortOrder';
 	
 	public function getCMSFields()
 	{
@@ -60,6 +68,11 @@ class Pricelist extends DataObject
 		//Pricelist items
 		$items_grid_field_config	= new GridFieldConfig_RelationEditor();
 		$items_grid_field		= new GridField('Items', 'Items', $this->Items(),$items_grid_field_config);
+		if (ClassInfo::exists('GridFieldSortableRows'))
+		{
+			//Make items/products sortable if 'undefinedoffset/sortablegridfield' module is installed
+			$items_grid_field_config->addComponent(new GridFieldSortableRows('SortOrder'));
+		}
 		$fields->addFieldToTab('Root', new Tab('Items','Items'));
 		$fields->addFieldToTab('Root.Items', $items_grid_field);
 		
