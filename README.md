@@ -11,6 +11,14 @@ SiteTree:
    - PricelistSiteTreeExtension
 ```
 
+**Note!** If you apply the extension to any other class than `SiteTree`, you need to define this additional configuration in `mysite/_config/pricelist.yml`:
+```YAML
+Pricelist:
+  belongs_many_many:
+    Pages: *YourCustomClassNameHere*
+```
+If you forget this, (at least) the backend will crash when you go to add a new Pricelist to your pricelist page. This additional configuration is not needed if you just extend the whole `SiteTree` class, as that's already configured by default.
+
 2. Put this to `themes/*your-theme-folder*/Page.ss` (or to some other template file):
 ```
 $AllPricelists
