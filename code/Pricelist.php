@@ -9,7 +9,7 @@
  * @method DataList Items()
  * @method DataList Pages()
  */
-class Pricelist extends DataObject
+class Pricelist extends DataObject implements PermissionProvider
 {
 	
 	/**
@@ -121,6 +121,40 @@ class Pricelist extends DataObject
 		return $this->renderWith('Pricelist', array(
 			'IncludeItems'	=> true,
 		));
+	}
+	
+	
+	/**
+	 * Return a map of permission codes to add to the dropdown shown in the Security section of the CMS.
+	 * array(
+	 *   'VIEW_SITE' => 'View the site',
+	 * );
+	 */
+	public function providePermissions()
+	{
+		return array(
+			'EDIT_PRICELISTS' => _t('Pricelist.Permission'),
+		);
+	}
+	
+	public function canCreate($member = null)
+	{
+		return Permission::check('EDIT_PRICELISTS');
+	}
+	
+	public function canEdit($member = null)
+	{
+		return Permission::check('EDIT_PRICELISTS');
+	}
+	
+	public function canDelete($member = null)
+	{
+		return Permission::check('EDIT_PRICELISTS');
+	}
+	
+	public function canView($member = null)
+	{
+		return Permission::check('EDIT_PRICELISTS');
 	}
 	
 }

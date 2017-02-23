@@ -5,6 +5,7 @@ en:
     Title: Title
     Description: Description
     Pages: Pages
+    Permission: 'Able to create, edit and delete pricelists'
   PricelistItem:
     Column:
       Description: Description

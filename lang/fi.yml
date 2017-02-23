@@ -5,6 +5,7 @@ fi:
     Title: Otsikko
     Description: Kuvaus
     Pages: Sivut
+    Permission: 'Mahdollisuus luoda, muokata ja poistaa hinnastoja'
   PricelistItem:
     Column:
       Description: Kuvaus

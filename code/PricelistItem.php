@@ -120,4 +120,24 @@ class PricelistItem extends DataObject
 		if ($this->hasMethod($field)) return $this->$field();
 		return $this->getField($field);
 	}
+	
+	public function canCreate($member = null)
+	{
+		return Permission::check('EDIT_PRICELISTS');
+	}
+	
+	public function canEdit($member = null)
+	{
+		return Permission::check('EDIT_PRICELISTS');
+	}
+	
+	public function canDelete($member = null)
+	{
+		return Permission::check('EDIT_PRICELISTS');
+	}
+	
+	public function canView($member = null)
+	{
+		return Permission::check('EDIT_PRICELISTS');
+	}
 }
