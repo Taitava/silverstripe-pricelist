@@ -10,6 +10,10 @@
  */
 class PricelistItem extends DataObject
 {
+	/**
+	 * @conf bool If true, do not display anything in the price column for items whose price is 0.
+	 */
+	private static $hide_zero_prices = false;
 	
 	private static $db = array(
 		'Title'			=> 'Varchar(255)',
@@ -81,6 +85,10 @@ class PricelistItem extends DataObject
 	
 	public function DisplayPrice()
 	{
+		if ($this->CurrentPrice == 0 && true === self::config()->get('hide_zero_prices'))
+		{
+			return '';
+		}
 		return $this->renderWith('PricelistItem_display_price');
 	}
 	
