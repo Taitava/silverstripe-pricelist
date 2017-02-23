@@ -30,6 +30,8 @@ Pricelist:
   include_stylesheet: false
   currency_sign: '€' #Whether to use the Requirements class to include this module's own stylesheet in frontend to perform some small styling.
   currency_side: 'right'
+PricelistItem:
+  hide_zero_prices: false #If true, do not display anything in the price column for items whose price is 0.
 ```
 Note that the above listing contains the default values, so if they seem good for you, you do not need to copypaste this list to anywhere.
 
