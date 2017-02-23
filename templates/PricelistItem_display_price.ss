@@ -1,6 +1,7 @@
+<span class="pricelist-current-price <% if $NormalPrice > $CurrentPrice %>pricelist-discount-price<% end_if %>">
+		$StartingPriceAbbreviation $LeftCurrencySign $CurrentPrice.XML $RightCurrencySign
+	<% if $EndingPrice != 0 %> - $LeftCurrencySign $EndingPrice $RightCurrencySign<% end_if %>
+</span>
 <% if $NormalPrice > $CurrentPrice %>
-	<span class="pricelist-current-price pricelist-discount-price">$StartingPriceAbbreviation $LeftCurrencySign $CurrentPrice.XML $RightCurrencySign</span>
 	(<span class="pricelist-old-price">$StartingPriceAbbreviation $LeftCurrencySign $NormalPrice.XML $RightCurrencySign</span>)
-<% else %>
-	<span class="pricelist-current-price">$StartingPriceAbbreviation $LeftCurrencySign $CurrentPrice.XML $RightCurrencySign</span>
 <% end_if %>

@@ -6,6 +6,7 @@
  * @property string $Description
  * @property float $CurrentPrice
  * @property float $NormalPrice
+ * @property float $EndingPrice
  * @property bool $IsStartingPrice
  */
 class PricelistItem extends DataObject
@@ -21,6 +22,7 @@ class PricelistItem extends DataObject
 		'CurrentPrice'		=> 'Currency',
 		'NormalPrice'		=> 'Currency',
 		'IsStartingPrice'	=> 'Boolean',
+		'EndingPrice'		=> 'Currency',
 	);
 	
 	private static $belongs_many_many = array(
@@ -49,6 +51,7 @@ class PricelistItem extends DataObject
 		$labels['Title'] = _t('PricelistItem.Title', 'Title');
 		$labels['CurrentPrice'] = _t('PricelistItem.CurrentPrice', 'Current price');
 		$labels['NormalPrice'] = _t('PricelistItem.NormalPrice', 'Normal price');
+		$labels['EndingPrice'] = _t('PricelistItem.EndingPrice', 'Ending price');
 		$labels['Description'] = _t('PricelistItem.Description', 'Description');
 		$labels['Pricelists'] = _t('Pricelist.PLURALNAME');
 		
@@ -59,7 +62,16 @@ class PricelistItem extends DataObject
 	{
 		$fields = parent::getCMSFields();
 		
+		//IsStartingPrice field
 		$fields->insertAfter('CurrentPrice', new CheckboxField('IsStartingPrice', _t('PricelistItem.IsStartingPrice', 'This is a starting price')));
+		
+		//Ending price field
+		$ending_price_field = $fields->dataFieldByName('EndingPrice');
+		$ending_price_field->setDescription(_t('PricelistItem.EndingPriceDescription'));
+		$fields->insertAfter('IsStartingPrice', $ending_price_field);
+		Requirements::javascript('pricelist/js/PricelistEditor.js'); //Conditional display logic for the field (hidden unless IsStartingPrice is checked)
+		
+		//NormalPrice field
 		$fields->dataFieldByName('NormalPrice')->setDescription(_t('PricelistItem.NormalPriceDescription', 'Set this only if you want to indicate that the Current price is discounted/changed.'));
 		
 		return $fields;
@@ -94,7 +106,7 @@ class PricelistItem extends DataObject
 	
 	public function StartingPriceAbbreviation()
 	{
-		return $this->IsStartingPrice ? _t('PricelistItem.StartingPriceAbbreviation', 'Starting at') : '';
+		return $this->IsStartingPrice && ($this->EndingPrice == 0) ? _t('PricelistItem.StartingPriceAbbreviation', 'Starting at') : '';
 	}
 	
 	/**

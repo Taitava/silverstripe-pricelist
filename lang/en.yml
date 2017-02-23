@@ -15,6 +15,8 @@ en:
     SINGULARNAME: Product
     StartingPriceAbbreviation: 'Starting at'
     IsStartingPrice: 'This is a starting price'
+    EndingPrice: Ending price
+    EndingPriceDescription: If you want to express a price range, use this field to define the maximum price. If zero, only the starting price is displayed.
     Title: Title
     Description: Description
     CurrentPrice: Current price
