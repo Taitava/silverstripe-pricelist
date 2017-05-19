@@ -55,7 +55,7 @@ class Pricelist extends DataObject implements PermissionProvider
 	
 	private static $summary_fields = array(
 		'SummaryTitle',
-		'Description',
+		'SummaryDescription',
 	);
 	
 	private static $default_sort = 'SortOrder';
@@ -69,6 +69,7 @@ class Pricelist extends DataObject implements PermissionProvider
 		
 		//Summaries
 		$labels['SummaryTitle'] = $labels['Title'];
+		$labels['SummaryDescription'] = $labels['Description'];
 		
 		return $labels;
 	}
@@ -175,6 +176,16 @@ class Pricelist extends DataObject implements PermissionProvider
 	{
 		if (empty(trim($this->Title))) return _t('Pricelist.EmptyTitle', 'Pricelist');
 		return $this->Title;
+	}
+	
+	/**
+	 * Removes HTML tags from the Description field so that it can be used in the $summary_fields.
+	 *
+	 * @return string
+	 */
+	public function SummaryDescription()
+	{
+		return Convert::html2raw($this->Description);
 	}
 	
 }

@@ -33,7 +33,7 @@ class PricelistItem extends DataObject
 	
 	private static $summary_fields = array(
 		'SummaryTitle',
-		'Description',
+		'SummaryDescription',
 		'DisplayPrice',
 	);
 	
@@ -63,6 +63,7 @@ class PricelistItem extends DataObject
 		
 		//Summaries
 		$labels['SummaryTitle'] = $labels['Title'];
+		$labels['SummaryDescription'] = $labels['Description'];
 		$labels['DisplayPrice'] = $labels['CurrentPrice'];
 		
 		return $labels;
@@ -181,5 +182,15 @@ class PricelistItem extends DataObject
 	{
 		if (empty(trim($this->Title))) return _t('PricelistItem.EmptyTitle', 'Item');
 		return $this->Title;
+	}
+	
+	/**
+	 * Removes HTML tags from the Description field so that it can be used in the $summary_fields.
+	 *
+	 * @return string
+	 */
+	public function SummaryDescription()
+	{
+		return Convert::html2raw($this->Description);
 	}
 }
