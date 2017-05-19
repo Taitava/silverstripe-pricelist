@@ -6,6 +6,7 @@ fi:
     Description: Kuvaus
     Pages: Sivut
     Permission: 'Mahdollisuus luoda, muokata ja poistaa hinnastoja'
+    EmptyTitle: Hinnasto
   PricelistItem:
     Column:
       Description: Kuvaus
@@ -22,3 +23,4 @@ fi:
     CurrentPrice: Hinta
     NormalPrice: Normaalihinta
     NormalPriceDescription: Syötä tähän hinta vain, jos haluat näyttää että voimassa olevaa hintaa on alennettu/muutettu.
+    EmptyTitle: Tuote

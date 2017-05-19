@@ -6,6 +6,7 @@ en:
     Description: Description
     Pages: Pages
     Permission: 'Able to create, edit and delete pricelists'
+    EmptyTitle: Pricelist
   PricelistItem:
     Column:
       Description: Description
@@ -22,3 +23,4 @@ en:
     CurrentPrice: Current price
     NormalPrice: Normal price
     NormalPriceDescription: 'Set this only if you want to indicate that the Current price is discounted/changed.'
+    EmptyTitle: Item

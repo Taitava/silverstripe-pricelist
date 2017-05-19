@@ -53,6 +53,11 @@ class Pricelist extends DataObject implements PermissionProvider
 		'Pages'			=> 'SiteTree',
 	);
 	
+	private static $summary_fields = array(
+		'SummaryTitle',
+		'Description',
+	);
+	
 	private static $default_sort = 'SortOrder';
 	
 	public function fieldLabels($includerelations = true)
@@ -61,6 +66,9 @@ class Pricelist extends DataObject implements PermissionProvider
 		
 		$labels['Title'] = _t('Pricelist.Title', 'Title');
 		$labels['Description'] = _t('Pricelist.Description', 'Description');
+		
+		//Summaries
+		$labels['SummaryTitle'] = $labels['Title'];
 		
 		return $labels;
 	}
@@ -155,6 +163,18 @@ class Pricelist extends DataObject implements PermissionProvider
 	public function canView($member = null)
 	{
 		return Permission::check('EDIT_PRICELISTS');
+	}
+	
+	/**
+	 * Used in the backend to display the Pricelist Title - or, if it's empty, a generic pricelist word just to make
+	 * the pricelist row to be notable in the GridField editor.
+	 *
+	 * @return string
+	 */
+	public function SummaryTitle()
+	{
+		if (empty(trim($this->Title))) return _t('Pricelist.EmptyTitle', 'Pricelist');
+		return $this->Title;
 	}
 	
 }

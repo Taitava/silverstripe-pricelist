@@ -31,6 +31,12 @@ class PricelistItem extends DataObject
 	
 	private static $default_sort = 'SortOrder';
 	
+	private static $summary_fields = array(
+		'SummaryTitle',
+		'Description',
+		'DisplayPrice',
+	);
+	
 	/**
 	 * A list of fields whose values should be escaped when rendered to a template in frontend. Basically all database
 	 * fields, excluding HTML fields. May also contain dynamic fields (= values retrieved from methods) if those should
@@ -54,6 +60,10 @@ class PricelistItem extends DataObject
 		$labels['EndingPrice'] = _t('PricelistItem.EndingPrice', 'Ending price');
 		$labels['Description'] = _t('PricelistItem.Description', 'Description');
 		$labels['Pricelists'] = _t('Pricelist.PLURALNAME');
+		
+		//Summaries
+		$labels['SummaryTitle'] = $labels['Title'];
+		$labels['DisplayPrice'] = $labels['CurrentPrice'];
 		
 		return $labels;
 	}
@@ -159,5 +169,17 @@ class PricelistItem extends DataObject
 	public function canView($member = null)
 	{
 		return Permission::check('EDIT_PRICELISTS');
+	}
+	
+	/**
+	 * Used in the backend to display the PricelistItem Title - or, if it's empty, a generic item word just to make
+	 * the item row to be notable in the GridField editor.
+	 *
+	 * @return string
+	 */
+	public function SummaryTitle()
+	{
+		if (empty(trim($this->Title))) return _t('PricelistItem.EmptyTitle', 'Item');
+		return $this->Title;
 	}
 }
