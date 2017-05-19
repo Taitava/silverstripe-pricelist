@@ -80,7 +80,7 @@ class PricelistItem extends DataObject
 		$ending_price_field = $fields->dataFieldByName('EndingPrice');
 		$ending_price_field->setDescription(_t('PricelistItem.EndingPriceDescription'));
 		$fields->insertAfter('IsStartingPrice', $ending_price_field);
-		Requirements::javascript('pricelist/js/PricelistEditor.js'); //Conditional display logic for the field (hidden unless IsStartingPrice is checked)
+		if ($ending_price_field->hasExtension('DisplayLogicFormField')) $ending_price_field->hideUnless('IsStartingPrice')->isChecked();
 		
 		//NormalPrice field
 		$fields->dataFieldByName('NormalPrice')->setDescription(_t('PricelistItem.NormalPriceDescription', 'Set this only if you want to indicate that the Current price is discounted/changed.'));

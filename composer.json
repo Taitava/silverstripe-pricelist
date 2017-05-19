@@ -18,6 +18,7 @@
     "installer-name": "pricelist"
   },
   "suggest": {
-    "undefinedoffset/sortablegridfield": "Makes it possible to drag & drop pricelists and pricelist items to different order in the backend."
+    "undefinedoffset/sortablegridfield": "Makes it possible to drag & drop pricelists and pricelist items to different order in the backend.",
+    "unclecheese/display-logic": "Hides the EndingPrice field in the backend when a product has a fixed price. Not required but makes the UI a little bit more cleaner."
   }
 }
